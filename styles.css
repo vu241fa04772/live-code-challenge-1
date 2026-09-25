@@ -1,0 +1,450 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+:root {
+    --bg: #eef1ed;
+    --navy: #17252d;
+    --coral: #f47d68;
+    --mint: #b8ddca;
+    --cream: #f7e7c9;
+    --sky: #c9e5e9;
+    --white: #ffffff;
+    --yellow: #f3c85b;
+    --text: #17252d;
+}
+body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 50px 20px;
+}
+.container {
+    width: min(1120px, 100%);
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows:
+        275px
+        215px
+        215px
+        150px;
+    gap: 18px;
+    grid-template-areas:
+        "start hero hero goals"
+        "focus timer notes goals"
+        "focus progress progress goals"
+        "statistics statistics statistics statistics";
+}
+.card {
+    border-radius: 15px;
+    padding: 28px;
+    overflow: hidden;
+    position: relative;
+}
+.hero {
+    grid-area: hero;
+    background: var(--navy);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 42px 48px;
+}
+.tag {
+    font-size: 11px;
+    letter-spacing: 2px;
+    font-weight: bold;
+    opacity: .7;
+    margin-bottom: 20px;
+}
+.hero h1 {
+    font-size: clamp(42px, 4vw, 64px);
+    line-height: .92;
+    letter-spacing: -3px;
+}
+.hero h1 em {
+    color: var(--coral);
+    font-style: normal;
+}
+.hero p {
+    max-width: 420px;
+    font-size: 14px;
+    line-height: 1.5;
+    opacity: .75;
+    margin-top: 22px;
+}
+.hero-bottom {
+    display: flex;
+    gap: 25px;
+    margin-top: 22px;
+    font-size: 11px;
+}
+.start {
+    grid-area: start;
+    background: var(--cream);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.label {
+    display: block;
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    font-weight: bold;
+    opacity: .55;
+    margin-bottom: 17px;
+}
+.start h2 {
+    font-size: 31px;
+    line-height: .95;
+    letter-spacing: -1.5px;
+}
+.start button {
+    width: 160px;
+    margin-top: 25px;
+    border: none;
+    border-radius: 30px;
+    padding: 13px 17px;
+    background: var(--coral);
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+.book {
+    position: absolute;
+    right: 25px;
+    bottom: 22px;
+    font-size: 35px;
+    transform: rotate(-10deg);
+}
+.goals {
+    grid-area: goals;
+    background: var(--mint);
+}
+.goals h2 {
+    font-size: 30px;
+    line-height: .95;
+    letter-spacing: -1.5px;
+    margin-bottom: 22px;
+}
+.goal {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    font-size: 11px;
+    margin: 13px 0;
+}
+.goal span {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    background: var(--navy);
+    color: white;
+    font-size: 10px;
+}
+.goal.pending span {
+    background: white;
+    color: var(--navy);
+}
+.goals small {
+    display: block;
+    margin-top: 20px;
+    font-size: 10px;
+    opacity: .55;
+}
+.focus {
+    grid-area: focus;
+    background: var(--coral);
+    color: white;
+}
+.focus h2 {
+    font-size: 32px;
+    line-height: .95;
+    letter-spacing: -1.5px;
+}
+.timer {
+    display: flex;
+    align-items: baseline;
+    gap: 5px;
+    margin-top: 35px;
+}
+.timer strong {
+    font-size: 65px;
+    letter-spacing: -4px;
+}
+.timer span {
+    font-size: 10px;
+    font-weight: bold;
+}
+.timer-line {
+    height: 5px;
+    border-radius: 5px;
+    background: rgba(255,255,255,.35);
+    margin-top: 10px;
+}
+.timer-line i {
+    display: block;
+    width: 68%;
+    height: 100%;
+    border-radius: inherit;
+    background: white;
+}
+.focus p {
+    font-size: 10px;
+    margin-top: 18px;
+    opacity: .8;
+}
+.notes {
+    grid-area: notes;
+    background: white;
+}
+.notes-top {
+    display: flex;
+    justify-content: space-between;
+}
+.notes h2 {
+    font-size: 27px;
+    line-height: .95;
+    letter-spacing: -1px;
+    margin-bottom: 22px;
+}
+.note {
+    display: flex;
+    gap: 12px;
+    font-size: 10px;
+    margin: 12px 0;
+    align-items: center;
+}
+.note span {
+    font-size: 9px;
+    opacity: .4;
+}
+.progress {
+    grid-area: progress;
+    background: var(--sky);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.progress-info h2 {
+    font-size: 29px;
+    line-height: .95;
+    letter-spacing: -1.5px;
+}
+.progress-info p {
+    margin-top: 15px;
+    font-size: 11px;
+    opacity: .6;
+}
+.circle {
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    background:
+        conic-gradient(
+            var(--navy) 0deg 259deg,
+            rgba(255,255,255,.5) 259deg 360deg
+        );
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+.circle::before {
+    content: "";
+    position: absolute;
+    inset: 13px;
+    border-radius: 50%;
+    background: var(--sky);
+}
+.circle strong,
+.circle span {
+    position: relative;
+}
+.circle strong {
+    font-size: 25px;
+}
+.circle span {
+    font-size: 8px;
+    margin-top: 3px;
+    opacity: .6;
+}
+.statistics {
+    grid-area: statistics;
+    background: var(--navy);
+    color: white;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr) 1.5fr;
+    align-items: center;
+    gap: 30px;
+}
+.stat {
+    border-right: 1px solid rgba(255,255,255,.15);
+}
+.stat span {
+    display: block;
+    font-size: 8px;
+    letter-spacing: 1.5px;
+    opacity: .5;
+}
+.stat strong {
+    display: block;
+    font-size: 26px;
+    margin-top: 6px;
+}
+.stat small {
+    font-size: 9px;
+    opacity: .5;
+}
+.mini-bars {
+    height: 70px;
+    display: flex;
+    align-items: end;
+    gap: 8px;
+}
+.mini-bars i {
+    flex: 1;
+    background: var(--coral);
+    border-radius: 5px 5px 0 0;
+}
+.mini-bars i:nth-child(1) {
+    height: 35%;
+}
+.mini-bars i:nth-child(2) {
+    height: 55%;
+}
+.mini-bars i:nth-child(3) {
+    height: 45%;
+}
+.mini-bars i:nth-child(4) {
+    height: 70%;
+}
+.mini-bars i:nth-child(5) {
+    height: 62%;
+}
+.mini-bars i:nth-child(6) {
+    height: 85%;
+}
+.mini-bars i:nth-child(7) {
+    height: 100%;
+}
+@media (max-width: 850px) {
+    body {
+        padding: 25px 15px;
+    }
+    .container {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: auto;
+        grid-template-areas:
+            "hero hero"
+            "start goals"
+            "focus notes"
+            "progress progress"
+            "statistics statistics";
+    }
+    .hero {
+        min-height: 300px;
+    }
+    .card {
+        min-height: 220px;
+    }
+    .focus {
+        min-height: 280px;
+    }
+    .progress {
+        min-height: 210px;
+    }
+    .statistics {
+        min-height: 150px;
+    }
+}
+@media (max-width: 560px) {
+    body {
+        padding: 10px;
+    }
+    .container {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 12px;
+        grid-template-areas:
+            "hero"
+            "start"
+            "goals"
+            "focus"
+            "notes"
+            "progress"
+            "statistics";
+    }
+    .card {
+        border-radius: 11px;
+        padding: 25px;
+        min-height: 210px;
+    }
+    .hero {
+        min-height: 290px;
+        padding: 30px;
+    }
+    .hero h1 {
+        font-size: 43px;
+    }
+    .start {
+        min-height: 190px;
+    }
+    .goals {
+        min-height: 270px;
+    }
+    .focus {
+        min-height: 300px;
+    }
+    .notes {
+        min-height: 245px;
+    }
+    .progress {
+        min-height: 230px;
+    }
+    .circle {
+        width: 105px;
+        height: 105px;
+    }
+    .statistics {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        min-height: 300px;
+    }
+    .stat:nth-child(2) {
+        border-right: none;
+    }
+    .mini-bars {
+        grid-column: 1 / -1;
+    }
+}
+@media (max-width: 380px) {
+    .hero h1 {
+        font-size: 37px;
+    }
+    .hero-bottom {
+        flex-direction: column;
+        gap: 7px;
+    }
+    .progress {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 25px;
+    }
+    .statistics {
+        grid-template-columns: 1fr;
+    }
+    .stat {
+        border-right: none;
+        border-bottom: 1px solid rgba(255,255,255,.15);
+        padding-bottom: 12px;
+    }
+    .mini-bars {
+        grid-column: auto;
+    }
+}
